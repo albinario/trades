@@ -4,17 +4,16 @@ const Picks = {
       jersey: '34',
       pos: 'C',
       team: 10
-
-    },
-    {
-      jersey: '91',
-      pos: 'C',
-      team: 10
     },
     {
       jersey: '88',
       pos: 'C',
       team: 12
+    },
+    {
+      jersey: '93',
+      pos: 'C',
+      team: 3
     },
     {
       jersey: '68',
@@ -37,19 +36,19 @@ const Picks = {
       team: 17
     },
     {
-      jersey: '26',
-      pos: 'D',
-      team: 7
-    },
-    {
       jersey: '77',
       pos: 'D',
       team: 22
     },
     {
-      jersey: '17',
+      jersey: '77',
       pos: 'D',
-      team: 17
+      team: 14
+    },
+    {
+      jersey: '47',
+      pos: 'D',
+      team: 6
     },
     {
       jersey: '88',
@@ -69,14 +68,14 @@ const Picks = {
       team: 22
     },
     {
-      jersey: '9',
-      pos: 'C',
-      team: 54
-    },
-    {
       jersey: '88',
       pos: 'C',
       team: 10
+    },
+    {
+      jersey: '21',
+      pos: 'C',
+      team: 14
     },
     {
       jersey: '88',
@@ -89,14 +88,14 @@ const Picks = {
       team: 12
     },
     {
-      jersey: '13',
-      pos: 'W',
-      team: 20
-    },
-    {
       jersey: '49',
       pos: 'W',
       team: 4
+    },
+    {
+      jersey: '97',
+      pos: 'W',
+      team: 1
     },
     {
       jersey: '8',
@@ -126,28 +125,18 @@ const Picks = {
   ],
   Sacke: [
     {
-      jersey: '12',
-      pos: 'C',
-      team: 28
-    },
-    {
-      jersey: '44',
-      pos: 'C',
-      team: 9
-    },
-    {
       jersey: '16',
       pos: 'C',
       team: 3
     },
     {
-      jersey: '9',
-      pos: 'W',
-      team: 19
+      jersey: '46',
+      pos: 'C',
+      team: 6
     },
     {
-      jersey: '11',
-      pos: 'W',
+      jersey: '48',
+      pos: 'C',
       team: 4
     },
     {
@@ -156,24 +145,34 @@ const Picks = {
       team: 6
     },
     {
-      jersey: '9',
+      jersey: '17',
       pos: 'W',
-      team: 23
+      team: 5
     },
     {
-      jersey: '44',
-      pos: 'D',
-      team: 10
+      jersey: '88',
+      pos: 'W',
+      team: 16
     },
     {
-      jersey: '6',
+      jersey: '96',
+      pos: 'W',
+      team: 21
+    },
+    {
+      jersey: '4',
       pos: 'D',
-      team: 15
+      team: 25
     },
     {
       jersey: '33',
       pos: 'D',
       team: 53
+    },
+    {
+      jersey: '23',
+      pos: 'D',
+      team: 3
     },
     {
       jersey: '50',
@@ -208,11 +207,6 @@ const Picks = {
       team: 14
     },
     {
-      jersey: '89',
-      pos: 'W',
-      team: 3
-    },
-    {
       jersey: '29',
       pos: 'W',
       team: 22
@@ -223,9 +217,9 @@ const Picks = {
       team: 3
     },
     {
-      jersey: '65',
-      pos: 'D',
-      team: 28
+      jersey: '91',
+      pos: 'W',
+      team: 14
     },
     {
       jersey: '25',
@@ -238,14 +232,19 @@ const Picks = {
       team: 52
     },
     {
+      jersey: '3',
+      pos: 'D',
+      team: 25
+    },
+    {
       jersey: '40',
       pos: 'G',
       team: 6
     },
     {
-      jersey: '35',
+      jersey: '19',
       pos: 'G',
-      team: 18
+      team: 22
     }
   ]
 }
