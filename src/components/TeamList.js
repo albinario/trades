@@ -20,14 +20,14 @@ class TeamList extends Component {
               picksOthers.push(`J${pick.pos}${pick.jersey}`);
             }
           })
-          Picks.Sacke.forEach(pick => {
-            if (team.id === pick.team) {
-              picksOthers.push(`S${pick.pos}${pick.jersey}`);
-            }
-          })
           Picks.Ville.forEach(pick => {
             if (team.id === pick.team) {
               picksOthers.push(`V${pick.pos}${pick.jersey}`);
+            }
+          })
+          Picks.Sacke.forEach(pick => {
+            if (team.id === pick.team) {
+              picksOthers.push(`S${pick.pos}${pick.jersey}`);
             }
           })
           return (

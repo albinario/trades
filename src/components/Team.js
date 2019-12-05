@@ -68,7 +68,6 @@ class Team extends Component {
         valueAwayWeek1: valueAway
       })
     })
-
     GamesFeed.getGames(this.props.team.id, moment().add(7, 'days').format("YYYY-MM-DD"), moment().add(13, 'days').format("YYYY-MM-DD")).then(games => {
       const gamesHome = games.games.filter(game => { return this.props.team.id === game.games[0].teams.home.team.id });
       const valueHome = this.getValue(gamesHome);
