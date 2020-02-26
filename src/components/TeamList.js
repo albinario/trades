@@ -12,22 +12,26 @@ class TeamList extends Component {
           let picksOthers = [];
           Picks.Albin.forEach(pick => {
             if (team.id === pick.team) {
-              picksAlbin.push(`${pick.pos}${pick.jersey}`);
+              // picksAlbin.push(`${pick.pos}${pick.jersey}`);
+              picksAlbin.push(`${pick.jersey}`);
             }
           })
           Picks.Jakob.forEach(pick => {
             if (team.id === pick.team) {
-              picksOthers.push(`J${pick.pos}${pick.jersey}`);
+              // picksOthers.push(`J${pick.pos}${pick.jersey}`);
+              picksOthers.push(`J${pick.jersey}`);
             }
           })
           Picks.Ville.forEach(pick => {
             if (team.id === pick.team) {
-              picksOthers.push(`V${pick.pos}${pick.jersey}`);
+              // picksOthers.push(`V${pick.pos}${pick.jersey}`);
+              picksOthers.push(`V${pick.jersey}`);
             }
           })
           Picks.Sacke.forEach(pick => {
             if (team.id === pick.team) {
-              picksOthers.push(`S${pick.pos}${pick.jersey}`);
+              // picksOthers.push(`S${pick.pos}${pick.jersey}`);
+              picksOthers.push(`S${pick.jersey}`);
             }
           })
           return (
