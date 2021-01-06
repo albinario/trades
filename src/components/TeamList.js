@@ -6,7 +6,7 @@ class TeamList extends Component {
   render() {
     console.log("TeamList: render()");
     return (
-      this.props.teams.length > 0 ?
+      this.props.teams ?
         this.props.teams.map((team, index) => {
           let picksAlbin = [];
           let picksOthers = [];
