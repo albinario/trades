@@ -117,7 +117,7 @@ class Team extends Component {
     return (
       <div className="row">
         <div className="col-1 text-right">{this.props.team.rank} <span className="small">{this.props.team.rankLast10}</span></div>
-        <div className="col-1 text-right">{this.props.team.rankHome}-{this.props.team.rankAway} <span className="small">{this.props.team.streak}</span></div>
+        <div className="col-1 text-right"><span className="small">{this.props.team.rankHome} {this.props.team.rankAway} {this.props.team.streak}</span></div>
         <div className="col-2" style={{padding: "0 10px 0 0"}}><img src={this.getLogo(this.props.team.id)} alt="" /> {this.state.name} <span className="small">({this.props.team.wins}-{this.props.team.losses}-{this.props.team.ot}) {this.props.team.goalsScored}-{this.props.team.goalsAgainst}</span></div>
         <div className="col-1 text-center">{this.state.gamesHomeWeek1} <span className="small">{this.state.valueHomeWeek1}</span> {this.state.gamesAwayWeek1} <span className="small">{this.state.valueAwayWeek1}</span></div>
         <div className="col-1 text-center">{this.state.gamesHomeWeek2} <span className="small">{this.state.valueHomeWeek2}</span> {this.state.gamesAwayWeek2} <span className="small">{this.state.valueAwayWeek2}</span></div>
