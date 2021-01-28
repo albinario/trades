@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import GamesFeed from '../util/GamesFeed';
+import Picks from '../util/Picks';
 
 class Team extends Component {
   constructor(props) {
@@ -123,8 +124,8 @@ class Team extends Component {
         <div className="col-1 text-center">{this.state.gamesHomeWeek2} <span className="small">{this.state.valueHomeWeek2}</span> {this.state.gamesAwayWeek2} <span className="small">{this.state.valueAwayWeek2}</span></div>
         <div className="col-1 text-center">{this.state.gamesHomeWeek3} <span className="small">{this.state.valueHomeWeek3}</span> {this.state.gamesAwayWeek3} <span className="small">{this.state.valueAwayWeek3}</span></div>
         <div className="col-1 text-center">{this.state.gamesHomeMonth} <span className="small">{this.state.valueHomeMonth}</span> {this.state.gamesAwayMonth} <span className="small">{this.state.valueAwayMonth}</span></div>
-        <div className="col-1 text-right"><span className="small">{this.props.picksAlbin.join(', ')}</span> <img src={this.getLogo(this.props.team.id)} alt="" style={{padding: "0 0 0 20px"}} /></div>
-        <div className="col-2"><span className="small">{this.props.picksOthers.join(', ')}</span></div>
+        <div className="col-1 text-right"><span className="small">{Picks.filter(p => p.picker === 'A' && p.team === this.props.team.id).map(p => p.jersey).join(', ')}</span> <img src={this.getLogo(this.props.team.id)} alt="" style={{padding: "0 0 0 20px"}} /></div>
+        <div className="col-2"><span className="small">{Picks.filter(p => p.picker !== 'A' && p.team === this.props.team.id).map(p => p.picker+p.jersey).join(', ')}</span></div>
       </div>
     )
   }
