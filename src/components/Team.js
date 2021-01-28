@@ -41,7 +41,7 @@ class Team extends Component {
       }
     })
     opponents.forEach(opponent => {
-      const opp = this.props.teams.filter(team => { return team.id === opponent });
+      const opp = this.props.teams.filter(team => team.id === opponent);
       let rank = parseInt(opp[0].rank);
       value += rank;
     })
@@ -64,9 +64,9 @@ class Team extends Component {
       name: this.cleanName(this.props.team.name)
     })
     GamesFeed.getGames(this.props.team.id, moment().format("YYYY-MM-DD"), moment().add(6, 'days').format("YYYY-MM-DD")).then(games => {
-      const gamesHome = games.games.filter(game => { return this.props.team.id === game.games[0].teams.home.team.id });
+      const gamesHome = games.games.filter(game => this.props.team.id === game.games[0].teams.home.team.id);
       const valueHome = this.getValue(gamesHome);
-      const gamesAway = games.games.filter(game => { return this.props.team.id === game.games[0].teams.away.team.id });
+      const gamesAway = games.games.filter(game => this.props.team.id === game.games[0].teams.away.team.id);
       const valueAway = this.getValue(gamesAway);
       this.setState({
         gamesHomeWeek1: gamesHome.length,
@@ -76,9 +76,9 @@ class Team extends Component {
       })
     })
     GamesFeed.getGames(this.props.team.id, moment().add(7, 'days').format("YYYY-MM-DD"), moment().add(13, 'days').format("YYYY-MM-DD")).then(games => {
-      const gamesHome = games.games.filter(game => { return this.props.team.id === game.games[0].teams.home.team.id });
+      const gamesHome = games.games.filter(game => this.props.team.id === game.games[0].teams.home.team.id);
       const valueHome = this.getValue(gamesHome);
-      const gamesAway = games.games.filter(game => { return this.props.team.id === game.games[0].teams.away.team.id });
+      const gamesAway = games.games.filter(game => this.props.team.id === game.games[0].teams.away.team.id);
       const valueAway = this.getValue(gamesAway);
       this.setState({
         gamesHomeWeek2: gamesHome.length,
@@ -88,9 +88,9 @@ class Team extends Component {
       })
     })
     GamesFeed.getGames(this.props.team.id, moment().add(14, 'days').format("YYYY-MM-DD"), moment().add(20, 'days').format("YYYY-MM-DD")).then(games => {
-      const gamesHome = games.games.filter(game => { return this.props.team.id === game.games[0].teams.home.team.id });
+      const gamesHome = games.games.filter(game => this.props.team.id === game.games[0].teams.home.team.id);
       const valueHome = this.getValue(gamesHome);
-      const gamesAway = games.games.filter(game => { return this.props.team.id === game.games[0].teams.away.team.id });
+      const gamesAway = games.games.filter(game => this.props.team.id === game.games[0].teams.away.team.id);
       const valueAway = this.getValue(gamesAway);
       this.setState({
         gamesHomeWeek3: gamesHome.length,
@@ -100,9 +100,9 @@ class Team extends Component {
       })
     })
     GamesFeed.getGames(this.props.team.id, moment().format("YYYY-MM-DD"), moment().add(1, 'months').format("YYYY-MM-DD")).then(games => {
-      const gamesHome = games.games.filter(game => { return this.props.team.id === game.games[0].teams.home.team.id });
+      const gamesHome = games.games.filter(game => this.props.team.id === game.games[0].teams.home.team.id);
       const valueHome = this.getValue(gamesHome);
-      const gamesAway = games.games.filter(game => { return this.props.team.id === game.games[0].teams.away.team.id });
+      const gamesAway = games.games.filter(game => this.props.team.id === game.games[0].teams.away.team.id);
       const valueAway = this.getValue(gamesAway);
       this.setState({
         gamesHomeMonth: gamesHome.length,
