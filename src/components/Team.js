@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import GamesFeed from '../util/GamesFeed';
 import Picks from '../util/Picks';
+import Period from './Period';
 
 class Team extends Component {
   constructor(props) {
@@ -23,7 +24,11 @@ class Team extends Component {
       gamesHomeMonth: 0,
       valueHomeMonth: 0,
       gamesAwayMonth: 0,
-      valueAwayMonth: 0
+      valueAwayMonth: 0,
+      postponedWeek1: 0,
+      postponedWeek2: 0,
+      postponedWeek3: 0,
+      postponedMonth: 0
     }
     this.getValue = this.getValue.bind(this);
     this.cleanName = this.cleanName.bind(this);
@@ -72,7 +77,8 @@ class Team extends Component {
         gamesHomeWeek1: gamesHome.length,
         valueHomeWeek1: valueHome,
         gamesAwayWeek1: gamesAway.length,
-        valueAwayWeek1: valueAway
+        valueAwayWeek1: valueAway,
+        postponedWeek1: games.games.filter(game => game.games[0].status.detailedState === "Postponed").length
       })
     })
     GamesFeed.getGames(this.props.team.id, moment().add(7, 'days').format("YYYY-MM-DD"), moment().add(13, 'days').format("YYYY-MM-DD")).then(games => {
@@ -84,7 +90,8 @@ class Team extends Component {
         gamesHomeWeek2: gamesHome.length,
         valueHomeWeek2: valueHome,
         gamesAwayWeek2: gamesAway.length,
-        valueAwayWeek2: valueAway
+        valueAwayWeek2: valueAway,
+        postponedWeek2: games.games.filter(game => game.games[0].status.detailedState === "Postponed").length
       })
     })
     GamesFeed.getGames(this.props.team.id, moment().add(14, 'days').format("YYYY-MM-DD"), moment().add(20, 'days').format("YYYY-MM-DD")).then(games => {
@@ -96,7 +103,8 @@ class Team extends Component {
         gamesHomeWeek3: gamesHome.length,
         valueHomeWeek3: valueHome,
         gamesAwayWeek3: gamesAway.length,
-        valueAwayWeek3: valueAway
+        valueAwayWeek3: valueAway,
+        postponedWeek3: games.games.filter(game => game.games[0].status.detailedState === "Postponed").length
       })
     })
     GamesFeed.getGames(this.props.team.id, moment().format("YYYY-MM-DD"), moment().add(1, 'months').format("YYYY-MM-DD")).then(games => {
@@ -108,7 +116,8 @@ class Team extends Component {
         gamesHomeMonth: gamesHome.length,
         valueHomeMonth: valueHome,
         gamesAwayMonth: gamesAway.length,
-        valueAwayMonth: valueAway
+        valueAwayMonth: valueAway,
+        postponedMonth: games.games.filter(game => game.games[0].status.detailedState === "Postponed").length
       })
     })
   }
@@ -117,15 +126,49 @@ class Team extends Component {
     // console.log(`Team: render() ${this.props.team.rank} ${this.props.team.name} (${this.props.team.id})`);
     return (
       <div className="row">
-        <div className="col-1 text-right">{this.props.team.rank} <span className="small">{this.props.team.rankLast10}</span></div>
-        <div className="col-1 text-right"><span className="small">{this.props.team.rankHome} {this.props.team.rankAway} {this.props.team.streak}</span></div>
-        <div className="col-2" style={{padding: "0 10px 0 0"}}><img src={this.getLogo(this.props.team.id)} alt="" /> {this.state.name} <span className="small">({this.props.team.wins}-{this.props.team.losses}-{this.props.team.ot}) {this.props.team.goalsScored}-{this.props.team.goalsAgainst}</span></div>
-        <div className="col-1 text-center">{this.state.gamesHomeWeek1} <span className="small">{this.state.valueHomeWeek1}</span> {this.state.gamesAwayWeek1} <span className="small">{this.state.valueAwayWeek1}</span></div>
-        <div className="col-1 text-center">{this.state.gamesHomeWeek2} <span className="small">{this.state.valueHomeWeek2}</span> {this.state.gamesAwayWeek2} <span className="small">{this.state.valueAwayWeek2}</span></div>
-        <div className="col-1 text-center">{this.state.gamesHomeWeek3} <span className="small">{this.state.valueHomeWeek3}</span> {this.state.gamesAwayWeek3} <span className="small">{this.state.valueAwayWeek3}</span></div>
-        <div className="col-1 text-center">{this.state.gamesHomeMonth} <span className="small">{this.state.valueHomeMonth}</span> {this.state.gamesAwayMonth} <span className="small">{this.state.valueAwayMonth}</span></div>
-        <div className="col-1 text-right"><span className="small">{Picks.filter(p => p.picker === 'A' && p.team === this.props.team.id).map(p => p.jersey).join(', ')}</span> <img src={this.getLogo(this.props.team.id)} alt="" style={{padding: "0 0 0 20px"}} /></div>
-        <div className="col-2"><span className="small">{Picks.filter(p => p.picker !== 'A' && p.team === this.props.team.id).map(p => p.picker+p.jersey).join(', ')}</span></div>
+        <div className="col-1 text-right">
+          {this.props.team.rank} <span className="small">{this.props.team.rankLast10}</span>
+        </div>
+        <div className="col-1 text-right">
+          <span className="small">{this.props.team.rankHome} {this.props.team.rankAway} {this.props.team.streak}</span>
+        </div>
+        <div className="col-2" style={{padding: "0 10px 0 0"}}>
+          <img src={this.getLogo(this.props.team.id)} alt="" /> {this.state.name} <span className="small">({this.props.team.wins}-{this.props.team.losses}-{this.props.team.ot}) {this.props.team.goalsScored}-{this.props.team.goalsAgainst}</span>
+        </div>
+        <Period
+          gamesHome={this.state.gamesHomeWeek1}
+          valueHome={this.state.valueHomeWeek1}
+          gamesAway={this.state.gamesAwayWeek1}
+          valueAway={this.state.valueAwayWeek1}
+          postponed={this.state.postponedWeek1}
+        />
+        <Period
+          gamesHome={this.state.gamesHomeWeek2}
+          valueHome={this.state.valueHomeWeek2}
+          gamesAway={this.state.gamesAwayWeek2}
+          valueAway={this.state.valueAwayWeek2}
+          postponed={this.state.postponedWeek2}
+        />
+        <Period
+          gamesHome={this.state.gamesHomeWeek3}
+          valueHome={this.state.valueHomeWeek3}
+          gamesAway={this.state.gamesAwayWeek3}
+          valueAway={this.state.valueAwayWeek3}
+          postponed={this.state.postponedWeek3}
+        />
+        <Period
+          gamesHome={this.state.gamesHomeMonth}
+          valueHome={this.state.valueHomeMonth}
+          gamesAway={this.state.gamesAwayMonth}
+          valueAway={this.state.valueAwayMonth}
+          postponed={this.state.postponedMonth}
+        />
+        <div className="col-1 text-right">
+          <span className="small">{Picks.filter(p => p.picker === 'A' && p.team === this.props.team.id).map(p => p.jersey).join(', ')}</span> <img src={this.getLogo(this.props.team.id)} alt="" style={{padding: "0 0 0 20px"}} />
+        </div>
+        <div className="col-2">
+          <span className="small">{Picks.filter(p => p.picker !== 'A' && p.team === this.props.team.id).map(p => p.picker+p.jersey).join(', ')}</span>
+        </div>
       </div>
     )
   }
