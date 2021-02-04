@@ -55,7 +55,11 @@ class Team extends Component {
 
   cleanName(name) {
     let n = name.split(" ");
-    return n[n.length-1];
+    if (n[0] === 'Columbus' || n[0] === 'Detroit' || n[0] === 'Toronto' || n[0] === 'Vegas') {
+      return n[n.length-2]+' '+n[n.length-1];
+    } else {
+      return n[n.length-1];
+    }
   }
 
   getLogo(teamId) {
