@@ -69,55 +69,39 @@ class Team extends Component {
       name: this.cleanName(this.props.team.name)
     })
     GamesFeed.getGames(this.props.team.id, moment().format("YYYY-MM-DD"), moment().add(6, 'days').format("YYYY-MM-DD")).then(games => {
-      const gamesHome = games.games.filter(game => game.games[0].status.detailedState !== "Postponed").filter(game => this.props.team.id === game.games[0].teams.home.team.id);
-      const valueHome = this.getValue(gamesHome);
-      const gamesAway = games.games.filter(game => game.games[0].status.detailedState !== "Postponed").filter(game => this.props.team.id === game.games[0].teams.away.team.id);
-      const valueAway = this.getValue(gamesAway);
       this.setState({
-        gamesHomeWeek1: gamesHome.length,
-        valueHomeWeek1: valueHome,
-        gamesAwayWeek1: gamesAway.length,
-        valueAwayWeek1: valueAway,
-        postponedWeek1: games.games.filter(game => game.games[0].status.detailedState === "Postponed").length
+        gamesHomeWeek1: games.gamesHome.length,
+        valueHomeWeek1: this.getValue(games.gamesHome),
+        gamesAwayWeek1: games.gamesAway.length,
+        valueAwayWeek1: this.getValue(games.gamesAway),
+        postponedWeek1: games.postponed
       })
     })
     GamesFeed.getGames(this.props.team.id, moment().add(7, 'days').format("YYYY-MM-DD"), moment().add(13, 'days').format("YYYY-MM-DD")).then(games => {
-      const gamesHome = games.games.filter(game => game.games[0].status.detailedState !== "Postponed").filter(game => this.props.team.id === game.games[0].teams.home.team.id);
-      const valueHome = this.getValue(gamesHome);
-      const gamesAway = games.games.filter(game => game.games[0].status.detailedState !== "Postponed").filter(game => this.props.team.id === game.games[0].teams.away.team.id);
-      const valueAway = this.getValue(gamesAway);
       this.setState({
-        gamesHomeWeek2: gamesHome.length,
-        valueHomeWeek2: valueHome,
-        gamesAwayWeek2: gamesAway.length,
-        valueAwayWeek2: valueAway,
-        postponedWeek2: games.games.filter(game => game.games[0].status.detailedState === "Postponed").length
+        gamesHomeWeek2: games.gamesHome.length,
+        valueHomeWeek2: this.getValue(games.gamesHome),
+        gamesAwayWeek2: games.gamesAway.length,
+        valueAwayWeek2: this.getValue(games.gamesAway),
+        postponedWeek2: games.postponed
       })
     })
     GamesFeed.getGames(this.props.team.id, moment().add(14, 'days').format("YYYY-MM-DD"), moment().add(20, 'days').format("YYYY-MM-DD")).then(games => {
-      const gamesHome = games.games.filter(game => game.games[0].status.detailedState !== "Postponed").filter(game => this.props.team.id === game.games[0].teams.home.team.id);
-      const valueHome = this.getValue(gamesHome);
-      const gamesAway = games.games.filter(game => game.games[0].status.detailedState !== "Postponed").filter(game => this.props.team.id === game.games[0].teams.away.team.id);
-      const valueAway = this.getValue(gamesAway);
       this.setState({
-        gamesHomeWeek3: gamesHome.length,
-        valueHomeWeek3: valueHome,
-        gamesAwayWeek3: gamesAway.length,
-        valueAwayWeek3: valueAway,
-        postponedWeek3: games.games.filter(game => game.games[0].status.detailedState === "Postponed").length
+        gamesHomeWeek3: games.gamesHome.length,
+        valueHomeWeek3: this.getValue(games.gamesHome),
+        gamesAwayWeek3: games.gamesAway.length,
+        valueAwayWeek3: this.getValue(games.gamesAway),
+        postponedWeek3: games.postponed
       })
     })
     GamesFeed.getGames(this.props.team.id, moment().format("YYYY-MM-DD"), moment().add(1, 'months').format("YYYY-MM-DD")).then(games => {
-      const gamesHome = games.games.filter(game => game.games[0].status.detailedState !== "Postponed").filter(game => this.props.team.id === game.games[0].teams.home.team.id);
-      const valueHome = this.getValue(gamesHome);
-      const gamesAway = games.games.filter(game => game.games[0].status.detailedState !== "Postponed").filter(game => this.props.team.id === game.games[0].teams.away.team.id);
-      const valueAway = this.getValue(gamesAway);
       this.setState({
-        gamesHomeMonth: gamesHome.length,
-        valueHomeMonth: valueHome,
-        gamesAwayMonth: gamesAway.length,
-        valueAwayMonth: valueAway,
-        postponedMonth: games.games.filter(game => game.games[0].status.detailedState === "Postponed").length
+        gamesHomeMonth: games.gamesHome.length,
+        valueHomeMonth: this.getValue(games.gamesHome),
+        gamesAwayMonth: games.gamesAway.length,
+        valueAwayMonth: this.getValue(games.gamesAway),
+        postponedMonth: games.postponed
       })
     })
   }

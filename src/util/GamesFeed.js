@@ -1,11 +1,17 @@
 import Connect from './Connect';
 
 const GamesFeed = {
-  getGames(team, startDate, endDate) {
-    return Connect.gamesAPI(team, startDate, endDate).then(jsonResponse => {
+  getGames(teamId, startDate, endDate) {
+    return Connect.gamesAPI(teamId, startDate, endDate).then(jsonResponse => {
+      const games = jsonResponse.dates.filter(game => game.games[0].status.detailedState !== "Postponed");
+      const gamesPostponed = jsonResponse.dates.filter(game => game.games[0].status.detailedState === "Postponed");
+      const gamesHome = games.filter(game => teamId === game.games[0].teams.home.team.id);
+      const gamesAway = games.filter(game => teamId === game.games[0].teams.away.team.id);
       if (jsonResponse) {
         return {
-          games: jsonResponse.dates
+          gamesHome: gamesHome,
+          gamesAway: gamesAway,
+          postponed: gamesPostponed.length
         }
       }
     }).catch(err => {
