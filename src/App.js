@@ -20,7 +20,10 @@ class App extends Component {
   render() {
     console.log("App: render()");
     return (
-      <TeamList teams={this.state.teams} message={this.state.message} />
+      <TeamList
+        teams={this.state.teams}
+        message={this.state.message}
+      />
     );
   }
 }
