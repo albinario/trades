@@ -3,7 +3,7 @@ import Team from './Team';
 
 class TeamList extends Component {
   render() {
-    console.log("TeamList: render()");
+    // console.log("TeamList: render()");
     return (
       this.props.teams ?
         this.props.teams.map((team, index) => {

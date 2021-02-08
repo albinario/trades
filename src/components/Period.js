@@ -12,6 +12,9 @@ class Period extends Component {
       valueAway: 0,
       postponed: 0
     }
+  }
+
+  componentDidMount() {
     GamesFeed.getGames(this.props.teamId, this.props.startDate, this.props.endDate).then(games => {
       this.setState({
         gamesHome: games.gamesHome.length,

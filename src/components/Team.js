@@ -13,7 +13,7 @@ class Team extends Component {
   }
 
   render() {
-    console.log(`Team: render() ${this.props.team.rank} ${this.props.team.name} (${this.props.team.id})`);
+    // console.log(`Team: render() ${this.props.team.rank} ${this.props.team.name} (${this.props.team.id})`);
     return (
       <div className="row">
         <div className="col-1 text-right">

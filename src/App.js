@@ -18,7 +18,7 @@ class App extends Component {
     })
   }
   render() {
-    console.log("App: render()");
+    // console.log("App: render()");
     return (
       <TeamList
         teams={this.state.teams}
