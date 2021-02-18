@@ -50,10 +50,10 @@ class Team extends Component {
           teams={this.props.teams}
         />
         <div className="col-1 text-right">
-          <span className="small">{Picks.filter(p => p.picker === 'A' && p.team === this.props.team.id).map(p => p.jersey).join(', ')}</span> <img src={Functions.getLogo(this.props.team.id)} alt="" style={{padding: "0 0 0 20px"}} />
+          <span className="small">{Picks.filter(p => p.picker === 'A' && p.team === this.props.team.id).sort((a,b) => a.jersey-b.jersey).map(p => p.jersey).join(', ')}</span> <img src={Functions.getLogo(this.props.team.id)} alt="" style={{padding: "0 0 0 20px"}} />
         </div>
         <div className="col-2">
-          <span className="small">{Picks.filter(p => p.picker !== 'A' && p.team === this.props.team.id).map(p => p.picker+p.jersey).join(', ')}</span>
+          <span className="small">{Picks.filter(p => p.picker !== 'A' && p.team === this.props.team.id).sort((a,b) => a.jersey-b.jersey).map(p => p.picker+p.jersey).join(', ')}</span>
         </div>
       </div>
     )
