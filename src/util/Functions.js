@@ -16,7 +16,7 @@ const Functions = {
   },
   cleanName(name) {
     let n = name.split(" ");
-    const teams = ['Columbus', 'Detroit', 'Toronto', 'Vegas']
+    const teams = ['Columbus', 'Detroit', 'Toronto'];
     if (teams.includes(n[0])) {
       return n[n.length-2]+' '+n[n.length-1];
     } else {
