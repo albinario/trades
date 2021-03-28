@@ -1,8 +1,29 @@
 body {
-  margin-top: 10px;
+  margin: 5px 0 0 5px;
+  line-height: 1.35;
+  font-size: 15px;
 }
 
 img {
-  height: 14px;
-  margin-bottom: 3px;
+  height: 20px;
+  margin-right: 1px;
+}
+
+.mytable {
+  width: 100%;
+}
+.home {
+  background-color: #e4e4e4;
+}
+.postponed {
+  background-color: red;
+}
+.first {
+  border-left: 1px dashed black;
+}
+.back {
+  border-left: 1px solid black;
+}
+.last {
+  border-right: 1px dashed black;
 }
