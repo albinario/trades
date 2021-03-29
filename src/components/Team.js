@@ -20,8 +20,14 @@ class Team extends Component {
         <td className="text-center">
           {this.props.team.rank}
         </td>
-        <td>
-          <span className="small">{this.props.team.rankDivision} – {this.props.team.rankLast10} – {this.props.team.rankHome} {this.props.team.rankAway} {this.props.team.streak}</span>
+        <td className="text-center">
+          <span className="small">{this.props.team.rankLast10}</span>
+        </td>
+        <td className="text-right">
+          {this.props.team.rankDivision}
+        </td>
+        <td className="text-right">
+          <span className="small">{this.props.team.streak}</span>
         </td>
         <td>
           <img src={Functions.getLogo(this.props.team.id)} alt="" /> {this.state.name} <span className="small">({this.props.team.wins}-{this.props.team.losses}-{this.props.team.ot})</span>
@@ -56,8 +62,8 @@ class Team extends Component {
         <td className="text-right">
           <span className="small">{Picks.filter(p => p.picker === 'A' && p.team === this.props.team.id).sort((a,b) => a.jersey-b.jersey).map(p => p.jersey).join(', ')}</span>
         </td>
-        <td>
-          <img src={Functions.getLogo(this.props.team.id)} alt="" style={{padding: "0 0 0 20px"}} />
+        <td className="text-center">
+          <img src={Functions.getLogo(this.props.team.id)} alt="" />
         </td>
         <td>
           <span className="small">{Picks.filter(p => p.picker !== 'A' && p.team === this.props.team.id).sort((a,b) => a.jersey-b.jersey).map(p => p.picker+p.jersey).join(', ')}</span>
