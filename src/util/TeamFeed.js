@@ -15,7 +15,8 @@ const TeamFeed = {
           losses: team.leagueRecord.losses,
           ot: team.leagueRecord.ot,
           goalsScored: team.goalsScored,
-          goalsAgainst: team.goalsAgainst
+          goalsAgainst: team.goalsAgainst,
+          gamesPlayed: team.gamesPlayed
         }
       })
     }).catch(err => {

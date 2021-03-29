@@ -9,7 +9,8 @@ class Team extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: Functions.cleanName(this.props.team.name)
+      name: Functions.cleanName(this.props.team.name),
+      totalGames: 56
     }
   }
 
@@ -59,6 +60,9 @@ class Team extends Component {
           endDate={moment().add(1, 'months').format("YYYY-MM-DD")}
           teams={this.props.teams}
         />
+        <td>
+          {this.state.totalGames-this.props.team.gamesPlayed}
+        </td>
         <td className="text-right">
           <span className="small">{Picks.filter(p => p.picker === 'A' && p.team === this.props.team.id).sort((a,b) => a.jersey-b.jersey).map(p => p.jersey).join(', ')}</span>
         </td>
