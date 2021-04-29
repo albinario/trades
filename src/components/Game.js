@@ -22,7 +22,7 @@ class Game extends Component {
       }
     }
     return (
-      <img src={Functions.getLogo(this.props.opponent)} alt="" className={className} />
+      <img src={Functions.getLogo(this.props.opponent)} alt="" className={className} title={this.props.date} />
     )
   }
 }

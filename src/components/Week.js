@@ -58,6 +58,7 @@ class Week extends Component {
                 first={first}
                 back={back}
                 last={last}
+                date={game.date}
               />
             )
           })
