@@ -31,7 +31,7 @@ class Team extends Component {
           <span className="small">{this.props.team.streak}</span>
         </td>
         <td>
-          <img src={Functions.getLogo(this.props.team.id)} alt="" /> {this.state.name} <span className="small">({this.props.team.wins}-{this.props.team.losses}-{this.props.team.ot})</span>
+          <img src={Functions.getLogo(this.props.team.id)} alt="" title={this.props.team.id} /> {this.state.name} <span className="small">({this.props.team.wins}-{this.props.team.losses}-{this.props.team.ot})</span>
         </td>
         <td>
           <span className="small">{this.props.team.goalsScored}-{this.props.team.goalsAgainst}</span>
@@ -67,7 +67,7 @@ class Team extends Component {
           <span className="small">{Picks.filter(p => p.picker === 'A' && p.team === this.props.team.id).sort((a,b) => a.jersey-b.jersey).map(p => p.jersey).join(', ')}</span>
         </td>
         <td className="text-center">
-          <img src={Functions.getLogo(this.props.team.id)} alt="" />
+          <img src={Functions.getLogo(this.props.team.id)} alt="" title={this.props.team.id} />
         </td>
         <td>
           <span className="small">{Picks.filter(p => p.picker !== 'A' && p.team === this.props.team.id).sort((a,b) => a.jersey-b.jersey).map(p => p.picker+p.jersey).join(', ')}</span>
