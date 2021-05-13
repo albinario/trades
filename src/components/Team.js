@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import moment from 'moment';
+import Config from '../util/Config';
 import Functions from '../util/Functions';
 import Picks from '../util/Picks';
 import Week from './Week';
@@ -9,8 +10,7 @@ class Team extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: Functions.cleanName(this.props.team.name),
-      totalGames: 56
+      name: Functions.cleanName(this.props.team.name)
     }
   }
 
@@ -61,7 +61,7 @@ class Team extends Component {
           teams={this.props.teams}
         />
         <td>
-          {this.state.totalGames-this.props.team.gamesPlayed}
+          {(Config.gameType === "R") ? Config.totalGames-this.props.team.gamesPlayed : null}
         </td>
         <td className="text-right">
           <span className="small">{Picks.filter(p => p.picker === 'A' && p.team === this.props.team.id).sort((a,b) => a.jersey-b.jersey).map(p => p.jersey).join(', ')}</span>
