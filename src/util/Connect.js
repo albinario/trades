@@ -1,8 +1,8 @@
 import Config from './Config';
 
 const Connect = {
-  gamesAPI(team, startDate, endDate) {
-    return fetch(`${Config.apiUrl}schedule?teamId=${team}&startDate=${startDate}&endDate=${endDate}`).then(response => {
+  gamesAPI(teamId, startDate, endDate) {
+    return fetch(`${Config.apiUrl}schedule?teamId=${teamId}&startDate=${startDate}&endDate=${endDate}`).then(response => {
       return response.json();
     })
   },

@@ -8,29 +8,28 @@ class Week extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      games: [],
-      value: 0
+      games: []
     }
   }
 
   componentDidMount() {
     GamesFeed.getGames(this.props.teamId, this.props.startDate, this.props.endDate).then(games => {
       this.setState({
-        games: games,
-        value: Functions.getValue(this.props.teamId, games.filter(game => game.games[0].status.detailedState !== "Postponed"), this.props.teams)
+        games: games
       })
     })
   }
 
   render() {
     // console.log('Week: render()');
+    let value = Functions.getValue(this.props.teamId, this.state.games.filter(game => game.games[0].status.detailedState !== "Postponed"), this.props.teams);
     let prevDate = 0;
     let first = false;
     let back = false;
     let last = false;
     return (
       <td>
-        <span className="small" style={{margin: "0 5px 0 0"}}>{this.state.value}</span>
+        <span className="small" style={{margin: "0 5px 0 0"}}>{value}</span>
         {
           this.state.games.map((game, index) => {
             game.date === this.props.startDate ? first = true : first = false;
