@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import './App.css';
 import TeamFeed from './util/TeamFeed'
 import TeamList from './components/TeamList';
+import { getPicks } from './util/PicksFeed';
 
 class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			teams: [],
-			message: 'Loading teams...'
+			picks: [],
+			message: 'Loading teams and picks...'
 		}
 
 		TeamFeed.getTeams().then(teams => {
@@ -19,6 +21,16 @@ class App extends Component {
 		})
 	}
 
+	async componentDidMount() {
+		try {
+			this.setState({
+				picks: await getPicks()
+			})
+		} catch(err) {
+			console.log("There was an error:", err)
+		}
+	}
+
 	render() {
 		// console.log("App: render()");
 		return (
@@ -26,6 +38,7 @@ class App extends Component {
 				<tbody>
 					<TeamList
 						teams={this.state.teams}
+						picks={this.state.picks.data}
 						message={this.state.message}
 					/>
 				</tbody>

@@ -11,6 +11,7 @@ class TeamList extends Component {
 						<Team
 							key={index}
 							team={team}
+							picks={(this.props.picks) ? this.props.picks.filter(p => p.team === team.id) : []}
 							teams={this.props.teams}
 						/>
 					);

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import Config from '../util/Config';
 import Functions from '../util/Functions';
-import Picks from '../util/Picks';
 import Week from './Week';
 import Month from './Month';
 
@@ -51,9 +50,9 @@ class Team extends Component {
 				/>
 
 				<td>{(Config.gameType === "R") ? Config.totalGames-this.props.team.gamesPlayed : null}</td>
-				<td className="text-right"><span className="small">{Picks.filter(p => p.picker === 'A' && p.team === this.props.team.id).sort((a,b) => a.jersey-b.jersey).map(p => p.jersey).join(', ')}</span></td>
+				<td className="text-right"><span className="small">{this.props.picks.filter(p => p.picker === 'A').sort((a,b) => a.jersey-b.jersey).map(p => p.jersey).join(', ')}</span></td>
 				<td className="text-center"><img src={Functions.getLogo(this.props.team.id)} alt="" title={this.props.team.id} /></td>
-				<td><span className="small">{Picks.filter(p => p.picker !== 'A' && p.team === this.props.team.id).sort((a,b) => a.jersey-b.jersey).map(p => p.picker+p.jersey).join(', ')}</span></td>
+				<td><span className="small">{this.props.picks.filter(p => p.picker !== 'A').sort((a,b) => a.jersey-b.jersey).map(p => p.picker+p.jersey).join(', ')}</span></td>
 			</tr>
 		)
 	}
