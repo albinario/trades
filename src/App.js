@@ -38,7 +38,7 @@ class App extends Component {
 				<tbody>
 					<TeamList
 						teams={this.state.teams}
-						picks={this.state.picks.data}
+						picks={this.state.picks}
 						message={this.state.message}
 					/>
 				</tbody>

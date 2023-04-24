@@ -7,5 +7,6 @@ export const getPicks = async () => {
 		throw new Error(`${res.status} ${res.statusText}`)
 	}
 
-	return await res.json()
+	const json = await res.json()
+	return json.data.filter(p => p.picker !== "")
 }
